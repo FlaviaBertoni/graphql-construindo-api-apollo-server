@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/alura-cursos/1922-graphql#readme",
   "dependencies": {
+    "apollo-datasource-rest": "^0.13.0",
     "apollo-server": "^2.24.1",
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.5",

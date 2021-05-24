@@ -1,4 +1,4 @@
-# 1922 Grapql
+# 1922 Graphql
 
 Projeto de estudos feito durante o curso da Alura "GraphQL: Construindo uma API com Apollo Server" para aprender Graphql.
 
@@ -6,14 +6,14 @@ Projeto de estudos feito durante o curso da Alura "GraphQL: Construindo uma API 
 
 ### Start do Apollo Server
 http://localhost:4000/
-```
-    $ yarn start
+```bash
+yarn start
 ```
 
 ### Start da json api
 http://localhost:3000/
-```
-    $ yarn start:json
+```bash
+yarn start:json
 ```
 
 ## Apollo Server
@@ -30,7 +30,7 @@ server.listen().then(({url}) => {
 })
 ```
 
-Caso queira iniciar em outra porta, por exemplo na 4002, basta informar o atributo port no primeiro parametro
+Caso queira iniciar em outra porta, por exemplo na **4002**, basta informar o atributo *port* no primeiro parametro
 do métodos listen
 
 ```js
@@ -38,6 +38,8 @@ server.listen({ port: 4002 })
 ```
 
 ### Introspecção
+
+Uma forma de explorar uma api graphql é olhando para as *DOCS* no playground e/ou fazer consultas ao esquema.
 
 Para checar o ponto de entrada:
 
@@ -67,7 +69,7 @@ query {
 }
 ```
 
-Para ver o kindo de um tipo especifico:
+Para ver o *kind* de um tipo especifico:
 
 ```graphql
 {
@@ -78,7 +80,7 @@ Para ver o kindo de um tipo especifico:
 }
 ```
 
-**Obs.:** Por padrão em produção não é possivel usar o modo de introspecção (por segurança). Mas caso se trate de um projeto aberto, é possível permitir explicitando na criação do servidor os atributos introspection e playground como true.
+**Obs.:** Por padrão em produção não é possivel usar o modo de introspecção (por segurança). Mas caso se trate de um projeto aberto é possível permitir explicitando na criação do servidor os atributos *introspection* e *playground* como **true**.
 
 ```js
 const server = new ApolloServer({
@@ -88,3 +90,29 @@ const server = new ApolloServer({
     playground: true,
 });
 ```
+
+### Data sources
+
+É possível utilizar bibliotecas para o apollo server a fim de integrar com diversas base de dados diferentes, como api rest, sql databases, mongo, entre outros:
+
+https://www.apollographql.com/docs/apollo-server/data/data-sources/#restdatasource-reference
+
+Mais infos:
+
+https://www.apollographql.com/blog/backend/data-sources/a-deep-dive-on-apollo-data-sources/
+
+Outra opções: 
+
+- [Prisma](https://www.prisma.io/) - SQL (Postgres, MySQL ou SQLite)
+- [Hasura](https://hasura.io/) - Postgres, GraphQL e APIs REST
+- [AWS AppSync](https://aws.amazon.com/pt/appsync/) - DynamoDB, Elasticsearch e Aurora
+- [Stitch](https://docs.mongodb.com/realm/graphql/) - MongoDB
+
+### Resolver params
+
+- **root/parent**: nó pai da query
+- **args**: parametros recebidos na query
+- **context**: acesso ao objeto de contexto do graphql
+- **info**: árvore da query/mutation da requisição
+
+Mais sobre o info: https://www.prisma.io/blog/graphql-server-basics-demystifying-the-info-argument-in-graphql-resolvers-6f26249f613a
