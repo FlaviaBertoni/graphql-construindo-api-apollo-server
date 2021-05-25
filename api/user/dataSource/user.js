@@ -6,12 +6,21 @@ class UsersAPI extends RESTDataSource {
     this.baseURL = 'http://localhost:3000';
   }
 
-  async getUsers(id) {
-    return this.get(`/users`);
+  async getUsers() {
+    const users = await this.get(`/users`);
+    return users.map(async user => ({
+      ...user,
+      role: await this.getRole(user.role)
+    }));
   }
 
   async getUserById(id) {
-    return this.get(`/users/${id}`);
+    const user = await this.get(`/users/${id}`);
+    return { ...user, role: await this.getRole(user.role) };
+  }
+
+  async getRole(id) {
+    return await this.get(`/roles/${id}`);
   }
 }
 
