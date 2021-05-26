@@ -41,6 +41,14 @@
       "ativo": true,
       "email": "m@m.com",
       "role": 2
+    },
+    {
+      "nome": "Laura",
+      "ativo": true,
+      "email": "laura@email.com",
+      "role": 2,
+      "createdAt": "2020-01-02T00:00:00.000Z",
+      "id": 7
     }
   ],
   "roles": [
